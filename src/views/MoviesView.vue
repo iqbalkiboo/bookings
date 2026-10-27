@@ -114,7 +114,7 @@ function scrollToRows() {
 <template>
   <template v-if="step > 1">
     <PageHeader
-      title="🎬 Tiket Bioskop"
+      title="Tiket Bioskop"
       subtitle="Tiga langkah cepat: pilih film, pilih jadwal, amankan kursimu."
     />
 
@@ -168,10 +168,10 @@ function scrollToRows() {
             <p class="nf-blurb">{{ blurb(hero.id) }}</p>
             <div class="nf-actions">
               <button id="hero-book" type="button" class="nf-btn nf-btn--play" @click="store.selectMovie(hero.id)">
-                ▶ Pesan Tiket
+                Pesan Tiket
               </button>
               <button id="hero-more" type="button" class="nf-btn nf-btn--info" @click="scrollToRows">
-                ⓘ Jelajahi Film
+                Jelajahi Film
               </button>
             </div>
           </div>
@@ -192,7 +192,7 @@ function scrollToRows() {
 
       <!-- ── Top ranking ── -->
       <section id="nf-rows" class="nf-section">
-        <h3 class="nf-row-title">🔥 Top Hari Ini <small>paling banyak dipesan</small></h3>
+        <h3 class="nf-row-title">Top Hari Ini <small>paling banyak dipesan</small></h3>
         <div class="nf-scroller">
           <button type="button" class="nf-arrow nf-arrow--l" aria-label="Geser kiri" @click="scrollRow('row-top', -1)">‹</button>
           <div id="row-top" class="nf-row">
@@ -219,7 +219,7 @@ function scrollToRows() {
 
       <!-- ── Sedang tayang ── -->
       <section class="nf-section">
-        <h3 class="nf-row-title">🎬 Sedang Tayang <small>{{ store.movies.length }} film</small></h3>
+        <h3 class="nf-row-title">Sedang Tayang <small>{{ store.movies.length }} film</small></h3>
         <div class="nf-scroller">
           <button type="button" class="nf-arrow nf-arrow--l" aria-label="Geser kiri" @click="scrollRow('row-now', -1)">‹</button>
           <div id="row-now" class="nf-row">
@@ -276,7 +276,7 @@ function scrollToRows() {
           </p>
           <BaseBadge class="mt-1.5" tone="white">{{ store.selectedMovie.rating }}</BaseBadge>
         </div>
-        <BaseButton variant="light" size="sm" @click="store.clearMovie()">← Ganti Film</BaseButton>
+        <BaseButton variant="light" size="sm" @click="store.clearMovie()">Ganti Film</BaseButton>
       </div>
 
       <!-- pilih tanggal -->
@@ -355,7 +355,7 @@ function scrollToRows() {
             {{ store.selectedShowtime.time }} WIB · {{ store.selectedMovie.studio }}
           </p>
         </div>
-        <BaseButton variant="light" size="sm" @click="store.clearShowtime()">← Ganti Jadwal</BaseButton>
+        <BaseButton variant="light" size="sm" @click="store.clearShowtime()">Ganti Jadwal</BaseButton>
       </div>
 
       <div class="grid gap-4 lg:grid-cols-[1.4fr_1fr]">

@@ -17,9 +17,9 @@ const featuredConcert = seedConcerts[0]
 const otherConcerts = seedConcerts.slice(1)
 
 const MODE_LABEL: Record<SaleMode, string> = {
-  war: '⚡ Ticket War',
-  ballot: '🎟️ Ballot',
-  both: '⚡ War + 🎟️ Ballot',
+  war: 'Ticket War',
+  ballot: 'Ballot',
+  both: 'War + Ballot',
 }
 
 function bannerGradient(color: string): string {
@@ -54,15 +54,15 @@ const features = [
   <BaseCard class="mb-5 px-6 py-10 text-center">
     <p class="text-xs font-bold tracking-[0.25em] text-primary">TIX ID</p>
     <h1 class="my-2 text-3xl font-extrabold text-heading sm:text-4xl">
-      GET TICKET<span class="text-primary">🎫</span>
+      GET TICKET
       <br />
     </h1>
     <p class="mx-auto mb-6 max-w-xl text-muted">
       Demo frontend booking tiket bioskop dan sistem tiketing konser
     </p>
     <div class="flex flex-wrap justify-center gap-3">
-      <BaseButton to="/movies" size="lg">🎬 Pesan Tiket Bioskop</BaseButton>
-      <BaseButton to="/concerts" variant="secondary" size="lg">⚡ Tiket Konser</BaseButton>
+      <BaseButton to="/movies" size="lg">Pesan Tiket Bioskop</BaseButton>
+      <BaseButton to="/concerts" variant="secondary" size="lg">Tiket Konser</BaseButton>
     </div>
   </BaseCard>
 
@@ -78,21 +78,21 @@ const features = [
 
     <div class="relative">
       <span class="rounded-full bg-black/40 px-3 py-1 text-xs font-bold tracking-widest backdrop-blur">
-        🔥 SEGERA — {{ MODE_LABEL[featuredConcert.saleMode].toUpperCase() }}
+        SEGERA — {{ MODE_LABEL[featuredConcert.saleMode].toUpperCase() }}
       </span>
       <h2 class="mt-2 mb-1 text-xl font-extrabold drop-shadow sm:text-2xl">
         {{ featuredConcert.artist }} — {{ featuredConcert.tour }}
       </h2>
       <p class="text-sm text-white/80">📍 {{ featuredConcert.venue }} · 🗓️ {{ featuredConcert.date }}</p>
       <p class="mt-1.5 text-sm">
-        🔴 <strong class="text-accent">{{ formatNumber(warStore.onlineUsers) }}</strong>
+          <strong class="text-accent">{{ formatNumber(warStore.onlineUsers) }}</strong>
         pengguna sedang online
       </p>
     </div>
 
     <div class="relative flex flex-col items-end gap-2">
       <BaseButton :to="`/concert/${featuredConcert.id}`" variant="light">
-        Daftar Sekarang →
+        Daftar Sekarang
       </BaseButton>
       <span class="text-xs font-bold text-white/80">
         mulai {{ formatIDR(startPrice(featuredConcert.warPrice)) }}
@@ -169,7 +169,7 @@ const features = [
 
   <!-- Fitur high traffic -->
   <section>
-    <SectionHeading title="Siap Traffic Tinggi 🚀" />
+    <SectionHeading title="Siap Traffic Tinggi" />
     <div class="grid gap-3 sm:grid-cols-3">
       <BaseCard v-for="f in features" :key="f.title" class="p-5">
         <span class="text-2xl">{{ f.icon }}</span>

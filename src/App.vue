@@ -23,16 +23,16 @@ import { RouterLink, RouterView } from 'vue-router'
         <!-- Nav -->
         <nav class="flex justify-center gap-1">
           <RouterLink class="nav-link" to="/">
-            <span>🏠</span> Beranda
+            Beranda
           </RouterLink>
           <RouterLink class="nav-link" to="/movies">
-            <span>🎬</span> Bioskop
+            Bioskop
           </RouterLink>
           <RouterLink class="nav-link" to="/concerts">
-            <span>🎤</span> Konser
+            Konser
           </RouterLink>
           <RouterLink class="nav-link" to="/tickets">
-            <span>🎟️</span> Tiket Saya
+            Tiket Saya
           </RouterLink>
         </nav>
       </div>
@@ -48,7 +48,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <div class="pixel-divider" style="height:2px; margin-bottom:16px;"></div>
       <div class="container-tix text-center">
         <p style="font-size:0.75rem; color:var(--color-muted); font-weight:700; letter-spacing:0.05em;">
-          ⚔️ TIX ROBLOX EDITION &nbsp;·&nbsp; Vue 3 + TypeScript + Pinia
+          TIX ROBLOX EDITION &nbsp;·&nbsp; Vue 3 + TypeScript + Pinia
           &nbsp;·&nbsp; <span style="color:var(--color-primary);">DEMO MODE</span>
         </p>
         <p style="font-size:0.65rem; color:var(--color-line); margin-top:4px; letter-spacing:0.03em;">

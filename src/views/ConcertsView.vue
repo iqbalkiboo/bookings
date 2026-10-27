@@ -10,16 +10,16 @@ const warStore = useTicketWarStore()
 const featured = seedConcerts[0]
 
 const MODE_LABEL: Record<SaleMode, string> = {
-  war: '⚡ Ticket War',
-  ballot: '🎟️ Ballot',
-  both: '⚡ War + 🎟️ Ballot',
+  war: 'Ticket War',
+  ballot: 'Ballot',
+  both: 'War + Ballot',
 }
 
 type Filter = 'all' | SaleMode
 const filters: { key: Filter; label: string }[] = [
   { key: 'all', label: 'Semua' },
-  { key: 'war', label: '⚡ Ticket War' },
-  { key: 'ballot', label: '🎟️ Ballot' },
+  { key: 'war', label: 'Ticket War' },
+  { key: 'ballot', label: 'Ballot' },
   { key: 'both', label: 'War + Ballot' },
 ]
 const activeFilter = ref<Filter>('all')
@@ -52,7 +52,7 @@ function parseDate(d: string) {
 
 <template>
   <PageHeader
-    title="🎤 Konser"
+    title="Konser"
     subtitle="Line-up artis kelas dunia — setiap konser punya metode penjualan tiket berbeda sesuai prediksi traffic."
   />
 
@@ -64,7 +64,7 @@ function parseDate(d: string) {
 
     <div class="spot-body">
       <div class="spot-tags">
-        <span class="spot-tag spot-tag-gold">✨ SPOTLIGHT</span>
+        <span class="spot-tag spot-tag-gold">SPOTLIGHT</span>
         <span class="spot-tag">{{ MODE_LABEL[featured.saleMode] }}</span>
       </div>
       <h2 class="spot-artist">{{ featured.artist }}</h2>

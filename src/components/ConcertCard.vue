@@ -11,9 +11,9 @@ const props = defineProps<{
 }>()
 
 const MODE_LABEL: Record<SaleMode, string> = {
-  war: '⚡ Ticket War',
-  ballot: '🎟️ Ballot',
-  both: '⚡ War + 🎟️ Ballot',
+  war: 'Ticket War',
+  ballot: 'Ballot',
+  both: 'War + Ballot',
 }
 
 /** Gradasi elegan: warna konser di-mix dengan hitam agar menyatu dgn dark theme */

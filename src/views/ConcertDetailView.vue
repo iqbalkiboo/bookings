@@ -43,8 +43,6 @@ const ballotStep = computed(() => {
 })
 const ballotSteps = ['Daftar', 'Menunggu Undian', 'Hasil']
 
-const tierIcons = ['👑', '💎', '🥇', '🥈', '🎫']
-
 function catFill(cat: { registered: number; quota: number }): number {
   return Math.min(100, Math.round((cat.registered / cat.quota) * 100))
 }
@@ -62,11 +60,11 @@ function pickCategory(id: string | number) {
       <span class="cd-emoji">{{ concert.poster }}</span>
 
       <div class="cd-main">
-        <RouterLink to="/concerts" class="cd-back">← Semua Konser</RouterLink>
+        <RouterLink to="/concerts" class="cd-back">Semua Konser</RouterLink>
         <div class="cd-tags">
-          <span class="cd-tag cd-tag--gold">🎤 KONSER</span>
-          <span v-if="showWar" class="cd-tag">⚡ TICKET WAR</span>
-          <span v-if="showBallot" class="cd-tag">🎟️ BALLOT</span>
+          <span class="cd-tag cd-tag--gold">KONSER</span>
+          <span v-if="showWar" class="cd-tag">TICKET WAR</span>
+          <span v-if="showBallot" class="cd-tag">BALLOT</span>
         </div>
         <h1 class="cd-artist">{{ concert.artist }}</h1>
         <p class="cd-tour">{{ concert.tour }}</p>
@@ -106,7 +104,7 @@ function pickCategory(id: string | number) {
         :aria-selected="activeTab === 'war'"
         @click="activeTab = 'war'"
       >
-        ⚡ Ticket War <small>first come, first served</small>
+        Ticket War <small>first come, first served</small>
       </button>
       <button
         id="tab-ballot"
@@ -117,7 +115,7 @@ function pickCategory(id: string | number) {
         :aria-selected="activeTab === 'ballot'"
         @click="activeTab = 'ballot'"
       >
-        🎟️ Ballot <small>undian adil</small>
+        Ballot <small>undian adil</small>
       </button>
     </div>
 
@@ -125,7 +123,7 @@ function pickCategory(id: string | number) {
     <div v-if="activeTab === 'war' && showWar" class="panel">
       <div class="war-hero">
         <div>
-          <span class="ballot-eyebrow">⚡ TICKET WAR</span>
+          <span class="ballot-eyebrow">TICKET WAR</span>
           <h2 class="war-hero-title">Penjualan Kilat</h2>
           <div class="war-facts">
             <div class="war-fact war-fact--price">
@@ -136,12 +134,12 @@ function pickCategory(id: string | number) {
             <div class="war-fact"><small>WAKTU CHECKOUT</small><b>60 detik</b></div>
           </div>
         </div>
-        <BaseButton variant="ghost" size="sm" @click="warStore.resetDemo()">↻ Ulangi Demo</BaseButton>
+        <BaseButton variant="ghost" size="sm" @click="warStore.resetDemo()">Ulangi Demo</BaseButton>
       </div>
 
       <!-- Upcoming -->
       <div v-if="warStore.status === 'upcoming'" class="war-box war-box--upcoming">
-        <p class="war-box-title">⏳ Penjualan belum dibuka</p>
+        <p class="war-box-title">Penjualan belum dibuka</p>
         <CountdownTimer class="countdown-big" :ends-at="warStore.saleStartAt" />
         <p class="war-box-sub">Siapkan koneksi &amp; login kamu. First come, first served!</p>
       </div>
@@ -173,7 +171,7 @@ function pickCategory(id: string | number) {
             request saat traffic tinggi).
           </p>
           <BaseButton size="lg" style="margin-top:0.85rem;" @click="warStore.joinQueue()">
-            🚦 Gabung Antrean
+            Gabung Antrean
           </BaseButton>
         </div>
 
@@ -185,7 +183,7 @@ function pickCategory(id: string | number) {
           <div class="queue-ring">
             <span class="queue-pos">#{{ warStore.queuePosition }}</span>
           </div>
-          <p class="war-box-title">🚦 Kamu berada di antrean virtual</p>
+          <p class="war-box-title">Kamu berada di antrean virtual</p>
           <div class="queue-progress">
             <ProgressBar :percent="100 - Math.min(100, warStore.queuePosition)" tone="accent" />
           </div>
@@ -195,10 +193,10 @@ function pickCategory(id: string | number) {
         <!-- Giliran checkout -->
         <div v-if="warStore.inPurchaseWindow" class="war-box war-box--purchase">
           <div class="purchase-pulse"></div>
-          <p class="war-box-title">🎉 Giliran kamu! Kuota di-hold selama:</p>
+          <p class="war-box-title">Giliran kamu! Kuota di-hold selama:</p>
           <CountdownTimer class="countdown-big countdown-big--gold" :ends-at="warStore.holdEndsAt" />
           <BaseButton size="lg" style="margin-top:1rem;" @click="warStore.buy()">
-            ⚡ Beli 1 Tiket — {{ formatIDR(concert.warPrice) }}
+            Beli 1 Tiket — {{ formatIDR(concert.warPrice) }}
           </BaseButton>
         </div>
 
@@ -241,7 +239,7 @@ function pickCategory(id: string | number) {
       <!-- Hero -->
       <div class="ballot-hero">
         <div class="ballot-hero-text">
-          <span class="ballot-eyebrow">🎟️ BALLOT SYSTEM</span>
+          <span class="ballot-eyebrow">BALLOT SYSTEM</span>
           <h2 class="ballot-title">Undian Tiket Konser</h2>
           <p class="ballot-desc">
             Tanpa rebutan! Daftar dulu, pemenang diundi secara acak. Semua pendaftar punya
@@ -249,8 +247,8 @@ function pickCategory(id: string | number) {
           </p>
         </div>
         <div class="ballot-hero-side">
-          <span class="ballot-fair">🎲 100% Acak &amp; Adil</span>
-          <BaseButton variant="ghost" size="sm" @click="ballotStore.resetDemo()">↻ Ulangi Demo</BaseButton>
+          <span class="ballot-fair">100% Acak &amp; Adil</span>
+          <BaseButton variant="ghost" size="sm" @click="ballotStore.resetDemo()">Ulangi Demo</BaseButton>
         </div>
       </div>
 
@@ -276,7 +274,7 @@ function pickCategory(id: string | number) {
           </h3>
           <div class="tiers">
             <button
-              v-for="(cat, i) in ballotStore.categories"
+              v-for="cat in ballotStore.categories"
               :key="cat.id"
               type="button"
               class="tier"
@@ -286,7 +284,6 @@ function pickCategory(id: string | number) {
               }"
               @click="pickCategory(cat.id)"
             >
-              <span class="tier-icon">{{ tierIcons[i % tierIcons.length] }}</span>
               <span class="tier-main">
                 <strong class="tier-name">{{ cat.name }}</strong>
                 <span class="tier-count">{{ cat.registered }}/{{ cat.quota }} pendaftar</span>
@@ -300,7 +297,7 @@ function pickCategory(id: string | number) {
               <span class="tier-side">
                 <strong class="tier-price">{{ formatIDR(cat.price) }}</strong>
                 <span class="tier-pct" :class="{ 'tier-pct--hot': catFill(cat) >= 80 }">
-                  {{ catFill(cat) >= 80 ? '🔥 ' : '' }}{{ catFill(cat) }}%
+                  {{ catFill(cat) }}%
                 </span>
               </span>
               <span class="tier-check">✓</span>
@@ -351,7 +348,7 @@ function pickCategory(id: string | number) {
               <strong>{{ ballotStore.selectedCategory?.name }}</strong>
             </div>
 
-            <BaseButton type="submit" block size="lg">🎟️ Daftar Ballot</BaseButton>
+            <BaseButton type="submit" block size="lg">Daftar Ballot</BaseButton>
           </form>
 
           <!-- Sudah daftar, belum drawing -->
@@ -367,7 +364,7 @@ function pickCategory(id: string | number) {
               Drawing dilakukan secara acak setelah periode pendaftaran tutup.
             </p>
             <BaseButton size="lg" block @click="ballotStore.runDraw()">
-              🎲 Simulasi Drawing Sekarang
+              Simulasi Drawing Sekarang
             </BaseButton>
           </div>
 
@@ -406,7 +403,7 @@ function pickCategory(id: string | number) {
   <div v-else class="not-found">
     <div style="font-size:3rem; margin-bottom:0.75rem;">😢</div>
     <p style="color:var(--color-muted); font-weight:700; margin-bottom:1rem;">Konser tidak ditemukan.</p>
-    <BaseButton to="/concerts">← Kembali ke Daftar Konser</BaseButton>
+    <BaseButton to="/concerts">Kembali ke Daftar Konser</BaseButton>
   </div>
 </template>
 

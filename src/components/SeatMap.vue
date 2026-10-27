@@ -9,7 +9,7 @@ const store = useMovieStore()
   <div>
     <!-- Screen indicator -->
     <div class="screen-wrap">
-      <div class="screen-label">📽️ LAYAR</div>
+      <div class="screen-label">LAYAR</div>
       <div class="screen-bar"></div>
     </div>
 

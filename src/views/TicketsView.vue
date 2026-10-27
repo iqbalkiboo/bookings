@@ -10,7 +10,7 @@ const store = useBookingsStore()
 
 <template>
   <PageHeader
-    title="🎫 Tiket Saya"
+    title="Tiket Saya"
     subtitle="Semua tiket bioskop & konser kamu tersimpan di sini (persist di localStorage)."
   />
 
@@ -19,8 +19,8 @@ const store = useBookingsStore()
     icon="🍿"
     message="Belum ada tiket. Yuk mulai booking!"
   >
-    <BaseButton to="/movies">🎬 Pesan Tiket Bioskop</BaseButton>
-    <BaseButton to="/concerts" variant="secondary">🎤 Cari Tiket Konser</BaseButton>
+    <BaseButton to="/movies">Pesan Tiket Bioskop</BaseButton>
+    <BaseButton to="/concerts" variant="secondary">Cari Tiket Konser</BaseButton>
   </EmptyState>
 
   <div v-else class="tickets-list">
