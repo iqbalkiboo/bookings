@@ -1,4 +1,4 @@
-# TIX ID — Bioskop & Konser Ticketing
+# Bioskop & Konser Ticketing
 
 Website frontend sederhana untuk demo sistem booking tiket **bioskop** dan
 **tiketing konser BTS** (Ticket War & Ballot) dengan simulasi penanganan
