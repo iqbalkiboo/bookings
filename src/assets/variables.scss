@@ -1,0 +1,47 @@
+// Variabel & helper SCSS global TIX ID — Roblox Dark palette
+// Dipakai oleh <style lang="scss" scoped> via: @use '@/assets/variables' as *;
+// (harus sinkron dengan @theme di main.css)
+
+$primary: #e3001b;
+$primary-glow: rgba(227, 0, 27, 0.5);
+$primary-soft: #2a0008;
+$accent: #00d4ff;
+$heading: #f0f2f5;
+$body: #c8cdd8;
+$muted: #7a849a;
+$surface: #161820;
+$surface-alt: #1e212c;
+$surface-2: #252836;
+$line: #2c3045;
+$success: #00c96e;
+$danger: #e3001b;
+
+$radius: 16px;
+
+/// Efek glow merah khas Roblox
+@mixin glow-red {
+  box-shadow:
+    0 0 20px rgba(227, 0, 27, 0.5),
+    0 0 60px rgba(227, 0, 27, 0.15);
+}
+
+/// Efek shadow lembut saat hover kartu
+@mixin card-hover {
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.5),
+      $primary-glow;
+  }
+}
+
+/// State kursi bioskop (dipakai di SeatMap)
+@mixin seat-state($bg, $border, $text) {
+  background: $bg;
+  border-color: $border;
+  color: $text;
+}
