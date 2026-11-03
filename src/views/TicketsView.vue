@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useBookingsStore } from '@/stores/bookings'
-import PageHeader from '@/components/ui/PageHeader.vue'
-import BaseButton from '@/components/ui/BaseButton.vue'
-import EmptyState from '@/components/ui/EmptyState.vue'
-import TicketCard from '@/components/TicketCard.vue'
+import PageHeader from '@/components/molecules/PageHeader.vue'
+import BaseButton from '@/components/atoms/BaseButton.vue'
+import EmptyState from '@/components/molecules/EmptyState.vue'
+import TicketCard from '@/components/organisms/TicketCard.vue'
 
 const store = useBookingsStore()
 </script>
 
 <template>
   <PageHeader
-    title="🎫 Tiket Saya"
+    title="Tiket Saya"
     subtitle="Semua tiket bioskop & konser kamu tersimpan di sini (persist di localStorage)."
   />
 
@@ -19,8 +19,8 @@ const store = useBookingsStore()
     icon="🍿"
     message="Belum ada tiket. Yuk mulai booking!"
   >
-    <BaseButton to="/movies">🎬 Pesan Tiket Bioskop</BaseButton>
-    <BaseButton to="/concerts" variant="secondary">🎤 Cari Tiket Konser</BaseButton>
+    <BaseButton to="/movies">Pesan Tiket Bioskop</BaseButton>
+    <BaseButton to="/concerts" variant="secondary">Cari Tiket Konser</BaseButton>
   </EmptyState>
 
   <div v-else class="tickets-list">
@@ -37,30 +37,4 @@ const store = useBookingsStore()
   </div>
 </template>
 
-<style scoped>
-.tickets-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-.tickets-count {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.25rem;
-}
-.tickets-count-num {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: var(--color-primary);
-  text-shadow: 0 0 12px rgba(227,0,27,0.4);
-  line-height: 1;
-}
-.tickets-count-label {
-  font-size: 0.82rem;
-  color: var(--color-muted);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-</style>
+<style scoped lang="scss" src="@/assets/styles/pages/tickets.scss"></style>

@@ -81,7 +81,14 @@
     margin-inline: auto;
     width: 100%;
     max-width: 68rem;
-    padding-inline: 1rem;
+    /* padding yang tumbuh mulus mengikuti lebar layar (320px → 1rem, ≥760px → 2rem) */
+    padding-inline: clamp(1rem, 0.4rem + 2.6vw, 2rem);
+  }
+
+  @media (max-width: 359px) {
+    .container-tix {
+      padding-inline: 0.75rem;
+    }
   }
 
   /* === Pixel font helper === */
@@ -319,4 +326,16 @@
 @keyframes spin-slow {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
+}
+
+/* Hormati preferensi pengguna: matikan animasi berat di perangkat / setelan tertentu */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

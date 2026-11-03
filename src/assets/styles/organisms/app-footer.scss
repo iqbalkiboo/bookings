@@ -1,0 +1,42 @@
+.app-footer {
+  padding: 1.25rem 0 1.5rem;
+  background: $surface;
+  border-top: 1px solid $line;
+
+  @include respond-down(md) {
+    padding: 1rem 0 1.25rem;
+  }
+}
+
+.app-footer-line {
+  height: 2px;
+  margin-bottom: 16px;
+}
+
+.app-footer-inner {
+  text-align: center;
+}
+
+.app-footer-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: $muted;
+
+  @include respond-down(sm) {
+    font-size: 0.68rem;
+    padding-inline: 1rem;
+  }
+}
+
+.app-footer-demo {
+  color: $primary;
+}
+
+.app-footer-copy {
+  margin-top: 4px;
+  font-size: 0.65rem;
+  letter-spacing: 0.03em;
+  color: $line;
+}
+

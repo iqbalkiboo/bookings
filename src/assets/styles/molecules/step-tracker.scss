@@ -1,0 +1,79 @@
+.steps {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 1.1rem 1.75rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid $line;
+  background: rgba(0, 0, 0, 0.15);
+
+  @include respond-down(md) {
+    padding: 1rem 1.25rem;
+  }
+}
+
+.step {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: $muted;
+
+  &:not(:last-child)::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    margin: 0 0.4rem;
+    border-radius: 2px;
+    background: $line;
+  }
+
+  &--done:not(:last-child)::after {
+    background: $success;
+  }
+
+  &--active {
+    color: $heading;
+  }
+
+  &--done {
+    color: $success;
+  }
+
+  @include respond-down(md) {
+    &-label {
+      display: none;
+    }
+
+    &--active &-label {
+      display: inline;
+    }
+  }
+}
+
+.step-dot {
+  @include flex-center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  border-radius: 50%;
+  border: 2px solid $line;
+  background: $surface;
+}
+
+.step--active .step-dot {
+  color: #1a1300;
+  border-color: $gold;
+  background: $gold;
+  box-shadow: 0 0 16px rgba($gold, 0.5);
+}
+
+.step--done .step-dot {
+  color: #fff;
+  border-color: $success;
+  background: $success;
+}
+

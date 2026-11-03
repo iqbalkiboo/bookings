@@ -1,0 +1,93 @@
+.order-summary-card {
+  height: fit-content;
+  padding: 1.25rem;
+
+  @include respond-up(lg) {
+    position: sticky;
+    top: 5rem;
+  }
+
+  @include respond-down(md) {
+    border-radius: $radius-lg;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.order-summary-title {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: $heading;
+}
+
+.order-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.order-summary-row {
+  @include flex-between;
+}
+
+.order-summary-label {
+  color: $muted;
+}
+
+.order-summary-value {
+  font-weight: 700;
+  color: $heading;
+  text-align: right;
+  max-width: 11rem;
+}
+
+.order-summary-divider {
+  margin: 0.75rem 0;
+  border-top: 1px dashed $line;
+}
+
+.order-summary-total {
+  @include flex-between;
+  align-items: baseline;
+}
+
+.order-summary-total-label {
+  font-size: 0.875rem;
+  color: $muted;
+}
+
+.order-summary-total-price {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: $primary;
+}
+
+.order-summary-submit {
+  margin-top: 1rem;
+}
+
+.order-summary-hint {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.7rem;
+  color: $muted;
+}
+
+.order-summary-success {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: $radius-md;
+  border: 1px solid rgba($success, 0.4);
+  background: rgba($success, 0.1);
+  color: $success;
+  font-size: 0.875rem;
+}
+
+.order-summary-success-text {
+  font-weight: 700;
+}
+

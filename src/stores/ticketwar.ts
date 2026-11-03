@@ -79,7 +79,7 @@ export const useTicketWarStore = defineStore('ticketWar', () => {
       status.value = 'soldout'
       if (queueJoined.value && !inPurchaseWindow.value) {
         queueJoined.value = false
-        lastError.value = 'Maaf, tiket sudah habis sebelum giliran kamu tiba. 😢'
+        lastError.value = 'Maaf, tiket sudah habis sebelum giliran kamu tiba.'
       }
     }
 
@@ -108,7 +108,7 @@ export const useTicketWarStore = defineStore('ticketWar', () => {
           queueJoined.value = false
           lastError.value =
             status.value === 'soldout'
-              ? 'Maaf, tiket sudah habis sebelum giliran kamu tiba. 😢'
+              ? 'Maaf, tiket sudah habis sebelum giliran kamu tiba.'
               : 'Penjualan belum dibuka. Coba beberapa saat lagi.'
         }
       }
@@ -134,7 +134,7 @@ export const useTicketWarStore = defineStore('ticketWar', () => {
     }
     if (stock.value <= 0) {
       status.value = 'soldout'
-      lastError.value = 'Tiket sudah habis! 😢'
+      lastError.value = 'Tiket sudah habis!'
       return false
     }
 

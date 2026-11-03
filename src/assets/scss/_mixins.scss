@@ -1,0 +1,145 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+/// Media query: layar <= breakpoint (mode mobile)
+@mixin respond-down($bp) {
+  @media (max-width: map.get($breakpoints, $bp)) {
+    @content;
+  }
+}
+
+/// Media query: layar > breakpoint (mode desktop)
+@mixin respond-up($bp) {
+  @media (min-width: map.get($breakpoints, $bp) + 1px) {
+    @content;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/// Permukaan kartu standar
+@mixin card($radius: $radius-lg) {
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius;
+  box-shadow: $shadow-card;
+}
+
+/// Efek kaca gelap (chip/stat di atas hero)
+@mixin glass($bg: 0.4, $blur: 8px) {
+  background: rgba(0, 0, 0, $bg);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/// Pill kecil (badge, tag, eyebrow)
+@mixin pill($color: $gold, $bg-alpha: 0.08) {
+  display: inline-block;
+  padding: 3px 12px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: $color;
+  border: 1px solid rgba($color, 0.5);
+  border-radius: $radius-pill;
+  background: rgba($color, $bg-alpha);
+}
+
+/// Tombol/aksen emas
+@mixin gold-button {
+  color: #1a1300;
+  background: $grad-gold;
+  border-color: transparent;
+  box-shadow: $glow-gold;
+}
+
+/// Efek terangkat saat hover
+@mixin hover-lift($y: -2px) {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY($y);
+  }
+}
+
+/// Glow neon pada teks
+@mixin text-glow($color: $primary, $alpha: 0.4) {
+  text-shadow: 0 0 10px rgba($color, $alpha);
+}
+
+/// Label kecil huruf besar
+@mixin eyebrow($size: 0.62rem, $spacing: 0.2em) {
+  font-size: $size;
+  font-weight: 800;
+  letter-spacing: $spacing;
+  text-transform: uppercase;
+  color: $muted;
+}
+
+/// Area sentuh minimal untuk mobile
+@mixin touch-target {
+  min-height: $touch-target;
+  min-width: $touch-target;
+}
+
+/// Panel konten besar (war / ballot)
+@mixin panel {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  padding: 1.5rem;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba($primary, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  @include respond-down(md) {
+    padding: 1.1rem;
+    border-radius: $radius-lg;
+  }
+}
+
+/// Judul kecil di dalam panel
+@mixin section-sub-title {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: $heading;
+}
+
+/// Chip kode tiket (font pixel)
+@mixin code-chip {
+  padding: 0.2rem 0.5rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: $primary;
+  background: $surface-alt;
+  border: 1px dashed $line;
+  border-radius: 6px;
+}

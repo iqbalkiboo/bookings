@@ -1,0 +1,51 @@
+.seg {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 6px;
+  padding: 6px;
+  margin-bottom: 1.25rem;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  background: $surface;
+
+  @include respond-down(md) {
+    position: sticky;
+    top: $header-height-mobile;
+    z-index: 20;
+  }
+}
+
+.seg-btn {
+  @include flex-center;
+  @include touch-target;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.6rem;
+  padding: 0.6rem 0.9rem;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: $muted;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: $radius-md;
+  background: transparent;
+  transition: all 0.25s;
+
+  small {
+    font-size: 0.66rem;
+    font-weight: 700;
+    opacity: 0.7;
+  }
+
+  &:hover {
+    color: $heading;
+    background: $surface-alt;
+  }
+
+  &--on,
+  &--on:hover {
+    @include gold-button;
+  }
+}
+

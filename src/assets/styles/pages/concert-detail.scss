@@ -1,0 +1,12 @@
+.not-found {
+  @include flex-center;
+  flex-direction: column;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.not-found-text {
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: $muted;
+}

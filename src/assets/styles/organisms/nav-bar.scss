@@ -1,0 +1,89 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: $z-nav;
+  background: rgba(13, 14, 17, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid $line;
+}
+
+.navbar-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.navbar-inner {
+  @include flex-between;
+  gap: 0.5rem;
+  padding-block: 0.75rem;
+
+  @include respond-down(md) {
+    min-height: $header-height-mobile;
+    padding-block: 0.4rem;
+    justify-content: center;
+  }
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+
+  // mobile: menu pindah ke BottomNav
+  @include respond-down(md) {
+    display: none;
+  }
+}
+
+.logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.logo-icon {
+  @include flex-center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  background: $grad-primary;
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  box-shadow: 0 0 14px rgba($primary, 0.6);
+
+  @include respond-down(md) {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.logo-tix {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.95rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: $heading;
+  @include text-glow($primary, 0.5);
+}
+
+.logo-sub {
+  font-size: 0.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $primary;
+}
+

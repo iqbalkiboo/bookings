@@ -12,4 +12,13 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // variabel & mixin global tersedia di semua <style lang="scss">
+        loadPaths: [fileURLToPath(new URL('./src/assets/scss', import.meta.url))],
+        additionalData: '@use "index" as *;',
+      },
+    },
+  },
 })

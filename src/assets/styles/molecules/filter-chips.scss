@@ -1,0 +1,58 @@
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  @include respond-down(md) {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.chip {
+  @include touch-target;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 8px;
+  padding: 7px 16px;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: $muted;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-pill;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  small {
+    padding: 1px 7px;
+    font-size: 0.68rem;
+    border-radius: $radius-pill;
+    background: $surface-2;
+  }
+
+  &:hover {
+    color: $heading;
+    border-color: $gold;
+  }
+}
+
+.chip-on {
+  @include gold-button;
+  box-shadow: 0 4px 16px rgba($gold, 0.3);
+
+  small {
+    color: #1a1300;
+    background: rgba(0, 0, 0, 0.12);
+  }
+}
+

@@ -1,0 +1,229 @@
+.cd-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 1.5rem;
+  min-height: 250px;
+  padding: 2rem 2.25rem;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  border-radius: $radius-xl;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 40%, transparent);
+  background:
+    radial-gradient(ellipse at 85% 10%, color-mix(in srgb, var(--c-color) 70%, transparent), transparent 60%),
+    linear-gradient(135deg, color-mix(in srgb, var(--c-color) 35%, #05060a), #07080c 80%);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background-image: repeating-linear-gradient(45deg, #fff 0 1px, transparent 1px 7px);
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, $gold, $accent, transparent);
+  }
+
+  @include respond-down(md) {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 1.5rem 1.25rem;
+  }
+
+  @include respond-down(sm) {
+    padding: 1.25rem 1rem;
+  }
+}
+
+.cd-emoji {
+  position: absolute;
+  right: 3%;
+  top: -20px;
+  font-size: clamp(6rem, 24vw, 16rem);
+  line-height: 1;
+  opacity: 0.16;
+  filter: blur(1px);
+  pointer-events: none;
+  animation: cd-float 6s ease-in-out infinite;
+
+  @include respond-down(md) {
+    font-size: 9rem;
+  }
+
+  @include respond-down(sm) {
+    font-size: 6.5rem;
+    top: -10px;
+  }
+}
+
+@keyframes cd-float {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-14px) rotate(3deg); }
+}
+
+.cd-main {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.cd-back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s;
+
+  &:hover {
+    color: $gold;
+    transform: translateX(-3px);
+  }
+}
+
+.cd-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.cd-tag {
+  @include glass(0.45, 6px);
+  padding: 4px 12px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #fff;
+  border-radius: $radius-pill;
+
+  &--gold {
+    @include gold-button;
+    box-shadow: none;
+  }
+}
+
+.cd-artist {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  overflow-wrap: break-word;
+
+  @include respond-down(sm) {
+    font-size: clamp(1.7rem, 9vw, 2.4rem);
+  }
+}
+
+.cd-tour {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: $gold;
+}
+
+.cd-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.cd-chip {
+  @include glass(0.35);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: $radius-md;
+
+  small {
+    display: block;
+    @include eyebrow(0.58rem, 0.18em);
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  b {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #fff;
+  }
+}
+
+.cd-stats {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 170px;
+
+  @include respond-down(md) {
+    flex-direction: row;
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.cd-stat {
+  @include glass(0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.75rem 1rem;
+  text-align: right;
+  border-radius: 14px;
+
+  @include respond-down(md) {
+    flex: 1;
+    text-align: left;
+  }
+}
+
+.cd-stat-value {
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #fff;
+
+  &--gold {
+    color: $gold;
+  }
+}
+
+.cd-stat-label {
+  @include eyebrow(0.62rem);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.cd-live {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+
+  i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff2a43;
+    animation: cd-ping 1.6s infinite;
+  }
+}
+
+@keyframes cd-ping {
+  0% { box-shadow: 0 0 0 0 rgba(255, 42, 67, 0.7); }
+  70%, 100% { box-shadow: 0 0 0 10px rgba(255, 42, 67, 0); }
+}
+

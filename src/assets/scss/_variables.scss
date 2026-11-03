@@ -1,0 +1,56 @@
+// ───────────────────────────────────────────────────────────────
+// Design tokens TIX ID — harus sinkron dengan @theme di main.css
+// ───────────────────────────────────────────────────────────────
+
+// Warna
+$primary: #e3001b;
+$primary-dark: #a80014;
+$primary-soft: #2a0008;
+$accent: #00d4ff;
+$gold: #f7c700;
+$gold-light: #ffe27a;
+$success: #00c96e;
+$danger: #e3001b;
+
+$heading: #f0f2f5;
+$body: #c8cdd8;
+$muted: #7a849a;
+
+$canvas: #0d0e11;
+$surface: #161820;
+$surface-alt: #1e212c;
+$surface-2: #252836;
+$line: #2c3045;
+
+// Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 22px;
+$radius-pill: 999px;
+
+// Shadow & glow
+$shadow-card: 0 4px 24px rgba(0, 0, 0, 0.45);
+$glow-red: 0 0 20px rgba(227, 0, 27, 0.5), 0 0 60px rgba(227, 0, 27, 0.15);
+$glow-gold: 0 6px 22px rgba(247, 199, 0, 0.3);
+$glow-cyan: 0 0 20px rgba(0, 212, 255, 0.4), 0 0 60px rgba(0, 212, 255, 0.1);
+
+// Gradient
+$grad-primary: linear-gradient(135deg, $primary, $primary-dark);
+$grad-gold: linear-gradient(90deg, $gold, $gold-light);
+$grad-success: linear-gradient(90deg, #00a85a, $success);
+
+// Layout
+$nav-height-mobile: 64px;
+$header-height-mobile: 52px;
+$touch-target: 44px;
+$z-nav: 50;
+$z-bottom-nav: 60;
+
+// Breakpoint (mobile-first: respond-down dipakai untuk mode mobile)
+$breakpoints: (
+  sm: 480px,
+  md: 760px,
+  lg: 1024px,
+);
+

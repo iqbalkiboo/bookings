@@ -1,0 +1,17 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-layout-content {
+  flex: 1;
+  padding-top: 1.5rem;
+  padding-bottom: 4rem;
+
+  // beri ruang agar konten tidak tertutup bottom nav
+  @include respond-down(md) {
+    padding-top: 1rem;
+    padding-bottom: calc(#{$nav-height-mobile} + env(safe-area-inset-bottom) + 1.5rem);
+  }
+}

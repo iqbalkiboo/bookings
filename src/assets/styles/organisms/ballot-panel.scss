@@ -1,0 +1,213 @@
+.ballot-panel {
+  @include panel;
+  padding: 0;
+
+  &::before {
+    display: none;
+  }
+}
+
+.eyebrow {
+  @include pill($gold);
+  letter-spacing: 0.18em;
+}
+
+.ballot-hero {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+  border-bottom: 1px solid $line;
+  background:
+    radial-gradient(ellipse at 90% 0%, color-mix(in srgb, var(--c-color) 45%, transparent), transparent 60%),
+    linear-gradient(135deg, $surface-alt, $surface);
+
+  @include respond-down(md) {
+    padding: 1.25rem;
+  }
+}
+
+.ballot-hero-text {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+}
+
+.ballot-title {
+  margin: 0.6rem 0 0.4rem;
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: $heading;
+
+  @include respond-down(md) {
+    font-size: 1.35rem;
+  }
+}
+
+.ballot-desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: $body;
+  opacity: 0.8;
+}
+
+.ballot-hero-side {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+
+  @include respond-down(md) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.ballot-fair {
+  padding: 6px 14px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: $accent;
+  border: 1px solid rgba($accent, 0.35);
+  border-radius: 10px;
+  background: rgba($accent, 0.07);
+}
+
+.ballot-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 1.75rem;
+  align-items: start;
+  padding: 1.75rem;
+
+  @include respond-down(md) {
+    grid-template-columns: 1fr;
+    padding: 1.25rem;
+  }
+}
+
+.ballot-col {
+  min-width: 0;
+}
+
+.ballot-section-title {
+  @include section-sub-title;
+
+  small {
+    margin-left: 0.5rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: $muted;
+  }
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  background: $surface-alt;
+
+  > :last-child {
+    align-self: stretch;
+  }
+
+  &--wait {
+    border-color: rgba($accent, 0.3);
+    background: rgba($accent, 0.04);
+  }
+
+  &--win {
+    border-color: rgba($success, 0.45);
+    background: radial-gradient(circle at 50% 0%, rgba($success, 0.14), rgba($success, 0.03));
+    box-shadow: 0 0 30px rgba($success, 0.12);
+  }
+}
+
+.result-title {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: $heading;
+
+  &--win {
+    color: $success;
+  }
+}
+
+.result-sub {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: $muted;
+
+  strong {
+    color: $heading;
+  }
+}
+
+.lot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 1rem;
+  border: 2px dashed rgba($accent, 0.4);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.25);
+
+  &--win {
+    border-color: rgba($success, 0.5);
+  }
+}
+
+.lot-label {
+  @include eyebrow(0.62rem, 0.25em);
+}
+
+.lot-number {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.4rem;
+  color: $accent;
+  text-shadow: 0 0 16px rgba($accent, 0.6);
+
+  @include respond-down(md) {
+    font-size: 1rem;
+  }
+}
+
+.lot-cat {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: $gold;
+}
+
+.ticket-code-inline {
+  @include code-chip;
+}
+
+.result-cta {
+  @include hover-lift;
+  display: block;
+  min-height: $touch-target;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border-radius: $radius-md;
+  background: $grad-success;
+  box-shadow: 0 8px 22px rgba($success, 0.3);
+}
+
