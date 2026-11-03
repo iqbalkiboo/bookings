@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
+import { useRouter, RouterLink } from 'vue-router'
 import { useMovieStore } from '@/stores/movie'
 import { useTicketWarStore } from '@/stores/ticketwar'
 import { seedConcerts, type SaleMode } from '@/data/concerts'
@@ -23,7 +23,7 @@ const MODE_LABEL: Record<SaleMode, string> = {
 }
 
 function bannerGradient(color: string): string {
-  return `linear-gradient(120deg, color-mix(in srgb, ${color} 55%, #000), color-mix(in srgb, ${color} 90%, #000))`
+  return `radial-gradient(ellipse 110% 130% at 85% 10%, color-mix(in srgb, ${color} 70%, transparent) 0%, color-mix(in srgb, ${color} 28%, #0d1117) 50%, #080a0f 100%)`
 }
 
 function startPrice(warPrice: number): number {
@@ -48,14 +48,11 @@ const features = [
 
 <template>
   <!-- Hero -->
-  <BaseCard class="mb-5 px-6 py-10 text-center">
-    <p class="text-xs font-bold tracking-[0.25em] text-primary">TIX ID</p>
-    <h1 class="my-2 text-3xl font-extrabold text-heading sm:text-4xl">
-      GET TICKET
-      <br />
-    </h1>
-    <p class="mx-auto mb-6 max-w-xl text-muted">
-      Demo frontend booking tiket bioskop dan sistem tiketing konser
+  <BaseCard class="hero-card">
+    <p class="hero-badge">TIX ID</p>
+    <h1 class="hero-title">GET TICKET</h1>
+    <p class="hero-subtitle">
+      Platform booking tiket bioskop dan sistem tiketing konser modern
     </p>
     <div class="flex flex-wrap justify-center gap-3">
       <BaseButton to="/movies" size="lg">Pesan Tiket Bioskop</BaseButton>
@@ -65,35 +62,49 @@ const features = [
 
   <!-- Banner konser unggulan -->
   <section
-    class="relative mb-8 flex flex-wrap items-center justify-between gap-4 overflow-hidden rounded-2xl border border-line p-6 text-white"
+    class="featured-banner"
     :style="{ background: bannerGradient(featuredConcert.color) }"
   >
     <!-- dekorasi poster glow -->
-    <span class="pointer-events-none absolute -top-6 -right-4 text-8xl opacity-25 select-none">
+    <span class="featured-poster-glow">
       {{ featuredConcert.poster }}
     </span>
 
-    <div class="relative">
-      <span class="rounded-full bg-black/40 px-3 py-1 text-xs font-bold tracking-widest backdrop-blur">
-        SEGERA — {{ MODE_LABEL[featuredConcert.saleMode].toUpperCase() }}
+    <div class="featured-top-row">
+      <span class="featured-pill">
+        Segera · {{ MODE_LABEL[featuredConcert.saleMode] }}
       </span>
-      <h2 class="mt-2 mb-1 text-xl font-extrabold drop-shadow sm:text-2xl">
-        {{ featuredConcert.artist }} — {{ featuredConcert.tour }}
-      </h2>
-      <p class="text-sm text-white/80">{{ featuredConcert.venue }} · {{ featuredConcert.date }}</p>
-      <p class="mt-1.5 text-sm">
-        <strong class="text-accent">{{ formatNumber(warStore.onlineUsers) }}</strong>
-        pengguna sedang online
-      </p>
+
+      <span class="featured-live-badge">
+        <span class="live-dot"></span>
+        <span><strong>{{ formatNumber(warStore.onlineUsers) }}</strong> online</span>
+      </span>
     </div>
 
-    <div class="relative flex flex-col items-end gap-2">
-      <BaseButton :to="`/concert/${featuredConcert.id}`" variant="light">
+    <div class="featured-body">
+      <p class="featured-artist">{{ featuredConcert.artist }}</p>
+      <h2 class="featured-headline">
+        {{ featuredConcert.tour }}
+      </h2>
+      <div class="featured-meta">
+        <span>{{ featuredConcert.venue }}</span>
+        <span class="meta-sep">·</span>
+        <span>{{ featuredConcert.date }}</span>
+      </div>
+    </div>
+
+    <div class="featured-footer">
+      <div class="featured-price-block">
+        <span class="price-caption">Mulai dari</span>
+        <span class="price-number">{{ formatIDR(startPrice(featuredConcert.warPrice)) }}</span>
+      </div>
+
+      <RouterLink
+        :to="`/concert/${featuredConcert.id}`"
+        class="featured-cta-btn"
+      >
         Daftar Sekarang
-      </BaseButton>
-      <span class="text-xs font-bold text-white/80">
-        mulai {{ formatIDR(startPrice(featuredConcert.warPrice)) }}
-      </span>
+      </RouterLink>
     </div>
   </section>
 
@@ -127,38 +138,27 @@ const features = [
         v-for="concert in otherConcerts"
         :key="concert.id"
         :to="`/concert/${concert.id}`"
-        class="group relative overflow-hidden rounded-2xl border border-line p-4 no-underline transition duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg"
+        class="concert-compact-card"
         :style="{ background: bannerGradient(concert.color) }"
       >
         <!-- poster glow dekoratif -->
-        <span
-          class="pointer-events-none absolute -right-2 -bottom-4 text-7xl opacity-30 select-none transition duration-300 group-hover:scale-110 group-hover:opacity-50"
-        >
+        <span class="compact-poster-bg">
           {{ concert.poster }}
         </span>
 
-        <span
-          class="relative rounded-full bg-black/40 px-2.5 py-1 text-[0.65rem] font-bold tracking-widest text-white/90 backdrop-blur"
-        >
+        <span class="compact-badge">
           {{ MODE_LABEL[concert.saleMode] }}
         </span>
 
-        <div class="relative mt-2.5">
-          <h3 class="text-lg font-extrabold text-white drop-shadow">{{ concert.artist }}</h3>
-          <p class="text-[0.68rem] font-bold tracking-widest text-white/70 uppercase">
-            {{ concert.tour }}
-          </p>
-          <p class="mt-1 text-xs text-white/80">{{ concert.date }}</p>
-          <p class="text-xs text-white/60">{{ concert.venue }}</p>
+        <div class="compact-info">
+          <h3 class="compact-artist">{{ concert.artist }}</h3>
+          <p class="compact-tour">{{ concert.tour }}</p>
+          <p class="compact-meta">{{ concert.venue }} · {{ concert.date }}</p>
+        </div>
 
-          <div class="mt-2.5 flex items-center justify-between border-t border-white/15 pt-2">
-            <span class="text-xs font-bold text-white/90">
-              mulai {{ formatIDR(startPrice(concert.warPrice)) }}
-            </span>
-            <span class="text-xs font-bold text-white transition group-hover:text-accent">
-              Lihat Detail
-            </span>
-          </div>
+        <div class="compact-footer">
+          <span class="compact-price">mulai {{ formatIDR(startPrice(concert.warPrice)) }}</span>
+          <span class="compact-action">Lihat Detail</span>
         </div>
       </RouterLink>
     </div>
@@ -175,3 +175,5 @@ const features = [
     </div>
   </section>
 </template>
+
+<style scoped lang="scss" src="@/assets/styles/pages/home.scss"></style>
