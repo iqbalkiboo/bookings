@@ -17,7 +17,7 @@ describe('BottomNav (organism)', () => {
 
     const links = wrapper.findAll('a.bottom-nav-item')
     expect(links).toHaveLength(4)
-    expect(wrapper.text()).toContain('Home')
+    expect(wrapper.text()).toContain('Beranda')
     expect(wrapper.text()).toContain('Bioskop')
     expect(wrapper.text()).toContain('Konser')
     expect(wrapper.text()).toContain('Tiket Saya')
@@ -33,7 +33,7 @@ describe('BottomNav (organism)', () => {
         subtitle: 'Studio 1',
         total: 50_000,
         code: 'TIX-1',
-        createdAt: new Date().toISOString(),
+        createdAt: Date.now(),
         seats: ['A1'],
       },
     ]

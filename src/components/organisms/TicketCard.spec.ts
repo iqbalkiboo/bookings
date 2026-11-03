@@ -10,7 +10,7 @@ describe('TicketCard (organism)', () => {
     subtitle: 'IMAX · 19:30',
     total: 100_000,
     code: 'TIX-INT-101',
-    createdAt: new Date().toISOString(),
+    createdAt: Date.now(),
     seats: ['E5', 'E6'],
   }
 
@@ -22,7 +22,8 @@ describe('TicketCard (organism)', () => {
     expect(wrapper.find('.ticket-title').text()).toBe('Interstellar')
     expect(wrapper.find('.ticket-sub').text()).toBe('IMAX · 19:30')
     expect(wrapper.find('.ticket-seat').text()).toContain('Kursi: E5, E6')
-    expect(wrapper.find('.ticket-seat').text()).toContain('Rp 100.000')
+    // formatIDR memakai non-breaking space (Intl.NumberFormat), normalisasi dulu
+    expect(wrapper.find('.ticket-seat').text().replace(/\s/g, ' ')).toContain('Rp 100.000')
     expect(wrapper.find('.ticket-code').text()).toBe('TIX-INT-101')
   })
 
