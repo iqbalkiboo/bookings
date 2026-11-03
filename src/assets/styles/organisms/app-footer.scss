@@ -1,42 +1,106 @@
 .app-footer {
-  padding: 1.25rem 0 1.5rem;
-  background: $surface;
+  padding: 1.5rem 0 1.75rem;
+  background: linear-gradient(180deg, $surface 0%, #12141b 100%);
   border-top: 1px solid $line;
 
+  // di mobile footer disembunyikan — sudah tergantikan BottomNav yang fixed
   @include respond-down(md) {
-    padding: 1rem 0 1.25rem;
+    display: none;
   }
 }
 
 .app-footer-line {
   height: 2px;
-  margin-bottom: 16px;
+  margin-bottom: 1.25rem;
+
+  @include respond-down(md) {
+    margin-bottom: 1rem;
+  }
 }
 
 .app-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
   text-align: center;
 }
 
-.app-footer-title {
+/* ── Brand ── */
+.app-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.app-footer-logo {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  font-size: 1rem;
+  border-radius: 9px;
+  background: $grad-primary;
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  box-shadow: 0 0 12px rgba($primary, 0.45);
+}
+
+.app-footer-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: $heading;
+  @include text-glow($primary, 0.45);
+}
+
+.app-footer-edition {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: $primary;
+  @include text-glow($primary, 0.3);
+}
+
+/* ── Tagline ── */
+.app-footer-tagline {
+  max-width: 34rem;
+  margin: 0;
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-weight: 600;
+  line-height: 1.5;
   color: $muted;
+  text-wrap: balance;
 
   @include respond-down(sm) {
-    font-size: 0.68rem;
-    padding-inline: 1rem;
+    font-size: 0.7rem;
+    max-width: 100%;
+    padding-inline: 0.5rem;
+  }
+}
+
+/* ── Meta / copyright ── */
+.app-footer-copy {
+  margin: 0;
+  padding-top: 0.6rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  color: rgba($muted, 0.75);
+  border-top: 1px dashed rgba($line, 0.7);
+
+  @include respond-down(sm) {
+    max-width: 100%;
+    padding-inline: 0.5rem;
+    font-size: 0.62rem;
   }
 }
 
 .app-footer-demo {
+  font-weight: 800;
+  letter-spacing: 0.12em;
   color: $primary;
+  @include text-glow($primary, 0.4);
 }
-
-.app-footer-copy {
-  margin-top: 4px;
-  font-size: 0.65rem;
-  letter-spacing: 0.03em;
-  color: $line;
-}
-
