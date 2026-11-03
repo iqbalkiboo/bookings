@@ -82,7 +82,11 @@ const features = [
       </h2>
       <p class="text-sm text-white/80">{{ featuredConcert.venue }} · {{ featuredConcert.date }}</p>
       <p class="mt-1.5 text-sm">
+<<<<<<< HEAD
         <strong class="text-accent">{{ formatNumber(warStore.onlineUsers) }}</strong>
+=======
+          <strong class="text-accent">{{ formatNumber(warStore.onlineUsers) }}</strong>
+>>>>>>> 46bdccfccc9a8ca29d927e97dca8ddf2462dc074
         pengguna sedang online
       </p>
     </div>
